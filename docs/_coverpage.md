@@ -1,7 +1,7 @@
 <div class="cover-main"><img width="180px" src="images/dna.jpg">
 
 <h1 id="blogOfMoving">
-<a><span>学而不止  -  </span></a></h1>
+<a><span>学而不止，高而愈下。</span></a></h1>
 
 
 
