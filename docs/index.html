@@ -203,6 +203,47 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				window.$docsify = {
+					name: '成长路',
+					repo: 'https://github.com/lincate/BOM',
+					  loadSidebar: true,
+					subMaxLevel: 3,
+					autoHeader: true,
+					search: {
+						paths: 'auto',
+						placeholder: '🔍 搜索 ',
+						noData: '哎呀，没有找到呀！ ',
+						// Headline depth, 1 - 6
+						depth: 3
+					},
+					copyCode: {
+						buttonText : '复制',
+						errorText  : 'Error',
+						successText: 'OK!'
+					},
+					pagination: {
+						previousText: '上一章',
+						nextText: '下一章',
+					},
+					coverpage: true
+				}
+			</script>
+			<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+			<!--代码块复制插件-->
+			<script src="//unpkg.com/docsify-copy-code"></script>
+			<!-- 图片缩放插件 -->
+			<script src="https://cyc-1256109796.cos.ap-guangzhou.myqcloud.com/zoom-image.min.js"></script>
+			<!--搜索插件-->
+			<script src="https://cdn.bootcss.com/docsify/4.5.9/plugins/search.min.js"></script>
+			<!--语法高亮插件-->
+			<script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+			
+			<script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+			<!--分页插件-->
+			<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+			<!--统计访问量插件-->
+			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 	</body>
 </html>
