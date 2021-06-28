@@ -1,8 +1,7 @@
 * 架构篇
 
      * 基本概念
-            
-        * CAP
+        * [CAP](/architecture/concept/cap理论.md)
 
      * 分布式架构
             
