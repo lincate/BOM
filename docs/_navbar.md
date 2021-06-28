@@ -5,7 +5,7 @@
 * 架构篇
     * [基础理论](/architecture/concept/)
     * [设计模式](/architecture/designpattern/)
-    * [架构模式](/architecture/archpattern/)
+    * [架构模式](/architecture/concept/)
     * [微服务架构](/architecture/microservice/)
     * [无服务架构](/architecture/servless/)
     * [服务网格](/architecture/servicemesh/)
