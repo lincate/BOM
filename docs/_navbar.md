@@ -1,3 +1,3 @@
 * 语言
-    * [中文](/cn/chinese)
-    * [English](/eng/english)
+    * [中文](/cn/chinese.md)
+    * [English](/eng/english.md)
