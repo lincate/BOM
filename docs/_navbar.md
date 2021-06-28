@@ -1,3 +1,23 @@
-* 语言
-    * [中文](/cn/)
-    * [English](/eng/)
+* 基础语言
+    * [Java](/language/java/)
+    * [Go](/language/go/)
+    * [Python](/language/python/)
+* 架构篇
+    * [基础理论](/architecture/concept/)
+    * [设计模式](/architecture/designpattern/)
+    * [架构模式](/architecture/archpattern/)
+    * [微服务架构](/architecture/microservice/)
+    * [无服务架构](/architecture/servless/)
+    * [服务网格](/architecture/servicemesh/)
+* 方法论
+    * [DDD](/methodology/ddd/)
+    * [TOGAF](/methodology/togaf/)
+    * [sAFE](/methodology/safe/)
+    * [敏捷](/methodology/agile/)    
+    * [研发效率](/methodology/efficiency/)    
+* 组件
+    * [Redis]](/component/redis/)
+    * [Kafka](/component/kafka/)
+    * [Kubernetes](/component/kubernetes/)
+* [问题分析](/issues/) 
+* [前沿技术](/news/) 

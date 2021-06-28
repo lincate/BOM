@@ -1,0 +1,2 @@
+* Redis      
+    * session拷贝 
