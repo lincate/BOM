@@ -1,7 +1,7 @@
 * 架构篇
 
      * 基本概念
-        * [CAP](/architecture/concept/cap理论.md)
+        * [CAP](/architecture/concept/cap.md)
         * [Load Balance](/architecture/concept/LoadBalance.md)
         
      * 分布式架构
