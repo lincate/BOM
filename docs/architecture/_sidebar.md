@@ -3,7 +3,8 @@
      * 基本概念
         * [CAP](/architecture/concept/cap.md)
         * [Load Balance](/architecture/concept/LoadBalance.md)
-        
+        * [IO模型](/architecture/concept/IO_Model.md)
+        * [KeepAlived](/architecture/concept/keepAlived.md)
      * 分布式架构
             
         * 架构演进
