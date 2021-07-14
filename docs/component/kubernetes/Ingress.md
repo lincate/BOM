@@ -1,3 +1,42 @@
+## Service类型
+
+ClusterIP：仅允许在内部访问，通过内部集群IP
+
+NodePort：开放外部访问的方式
+
+LoadBalance：需要有基础设施支持
+
+Headless Service：不含集群IP，可以获取具体Pod的内部IP，可以通过指定IP方式进行访问。
+
+## Pod间的负载均衡
+
+**Userspace：**
+
+遍历space内的service对象列表；对频繁切换用户态，内核态；效率较低，基本已经废弃。
+
+**IpTables：**
+
+将service信息存入IpTables，通过service的变更，更新IpTables。是K8S/K3S默认的proxy方式。采用轮询的策略随机选择。可以允许设置session粘性保证同一IP落入固定的某个POD。
+
+在数据量上升到一定程度的时候，在各个Node都要保证IpTables的数据更新，一般在1000个POD时，延时约0.6ms。适合于小数据量service
+
+**IPVS：**
+
+通过Linux的IPVS模块，设置虚拟主机，进行访问。允许多种均衡策略：
+
+IPVS提供了更多选项来平衡后端Pod的流量。 这些是：
+
+- `rr`: round-robin
+- `lc`: least connection (smallest number of open connections)
+- `dh`: destination hashing
+- `sh`: source hashing
+- `sed`: shortest expected delay
+- `nq`: never queue
+
+![image-20210708150104922](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210708150104922.png)
+
+
+
 ## Ingress是什么？
 
 [Ingress](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#ingress-v1beta1-networking-k8s-io) 公开了从集群外部到集群内[服务](https://kubernetes.io/zh/docs/concepts/services-networking/service/)的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
@@ -10,7 +49,9 @@
 
 Ingress 不会公开任意端口或协议。 将 HTTP 和 HTTPS 以外的服务公开到 Internet 时，通常使用 [Service.Type=NodePort](https://kubernetes.io/zh/docs/concepts/services-networking/service/#nodeport) 或 [Service.Type=LoadBalancer](https://kubernetes.io/zh/docs/concepts/services-networking/service/#loadbalancer) 类型的服务。
 
+## OSI 七层模型
 
+![image-20210707175119620](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210707175119620.png)
 
 ## Ingress控制器
 
@@ -34,12 +75,17 @@ Ingress通过规则来定义，每个 HTTP 规则都包含以下信息：
 - 路径列表 paths（例如，`/testpath`）,每个路径都有一个由 `serviceName` 和 `servicePort` 定义的关联后端。 在负载均衡器将流量定向到引用的服务之前，主机和路径都必须匹配传入请求的内容。
 - `backend`（后端）是 [Service 文档](https://kubernetes.io/zh/docs/concepts/services-networking/service/)中所述的服务和端口名称的组合。 与规则的 `host` 和 `path` 匹配的对 Ingress 的 HTTP（和 HTTPS ）请求将发送到列出的 `backend`。
 
-## 局限性
+## 原理
 
-暂时仅提供
+![image-20210708152018723](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210708152018723.png)
 
-负载均衡算法有限，仅支持Round Robin 和ewma均值， 因为在K8S认为中，服务里面的各个POD都应该是一模一样的，可根据不同的业务分类创建不同的服务。
+## Ingress-Nginx
 
-不支持部分校验功能例如JWT，
+自定义注解功能：https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
 
-多个服务有路径冲突，或者部分使用了绝对路径
+均衡策略：https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#load-balance
+
+## 自定
+
+灰度发布
+
