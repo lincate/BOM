@@ -3,7 +3,7 @@
 
 * DDD   
     * 如何重构 
-* [战略设计] (/methodology/DDD/DDD领域驱动设计-战略设计.md)
+* [战略设计](/methodology/DDD/DDD领域驱动设计-战略设计.md)
     
 * sAFE
     * 架构演进 
