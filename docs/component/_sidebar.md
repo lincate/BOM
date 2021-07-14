@@ -2,5 +2,5 @@
     * [概念](/component/nginx/concept.md)
 * Kubernetes      
     * [Ingress](/component/kubernetes/Ingress.md)
-    * [Namespace](/component/Namespace.md)
+    * [Namespace](/component/kubernetes/Namespace.md)
 
