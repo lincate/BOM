@@ -1,6 +1,6 @@
 * Nginx      
-    * [概念](/commpont/nginx/concept.md)
+    * [概念](/component/nginx/concept.md)
 * Kubernetes      
-    * [Ingress](/commpont/kubernetes/Ingress.md)
-    * [Namespace](/commpont/Namespace.md)
+    * [Ingress](/component/kubernetes/Ingress.md)
+    * [Namespace](/component/Namespace.md)
 
