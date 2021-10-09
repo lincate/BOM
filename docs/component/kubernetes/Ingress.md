@@ -85,7 +85,12 @@ Ingress通过规则来定义，每个 HTTP 规则都包含以下信息：
 
 均衡策略：https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#load-balance
 
-## 自定
+## 路由策略
 
-灰度发布
+1. 统一管理面入口地址。http(s)://ip:port(指定)/URI
+2. 统一业务面管理地址。http(s)://ip:port(指定)/URI
+3. 不同管理面/业务面定义统一的URI前缀 nacos/grafana/prometheus/msip => servicecenter/dashboard/monitor/maintain
+4. Ingress集成https，后端访问不使用https
+5. 需要统一引入管理面/业务面应用，需要有统一的前缀地址
+6. Ingress不负责权限及安全校验等事务。
 
