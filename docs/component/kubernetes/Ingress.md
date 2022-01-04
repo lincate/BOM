@@ -33,7 +33,7 @@ IPVS提供了更多选项来平衡后端Pod的流量。 这些是：
 - `sed`: shortest expected delay
 - `nq`: never queue
 
-![image-20210708150104922](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210708150104922.png)
+![](./images/response.png)
 
 
 
