@@ -1,7 +1,7 @@
 * 架构篇
 * [架构基础](/ArchitectureBase.md)
      * 基本概念
-        * [CAP](/architecture/concept/cap.md)
+        * [CAP](/architecture/concept/CAP.md)
         * [Load Balance](/architecture/concept/LoadBalance.md)
         * [IO模型](/architecture/concept/IO_Model.md)
         * [KeepAlived](/architecture/concept/keepAlived.md)
