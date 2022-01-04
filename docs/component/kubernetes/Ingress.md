@@ -77,8 +77,6 @@ Ingress通过规则来定义，每个 HTTP 规则都包含以下信息：
 
 ## 原理
 
-![](./images/arch.png)
-
 ## Ingress-Nginx
 
 自定义注解功能：https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
