@@ -51,7 +51,7 @@ Ingress 不会公开任意端口或协议。 将 HTTP 和 HTTPS 以外的服务�
 
 ## OSI 七层模型
 
-![image-20210707175119620](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210707175119620.png)
+![](./images/iso.png)
 
 ## Ingress控制器
 
@@ -77,7 +77,7 @@ Ingress通过规则来定义，每个 HTTP 规则都包含以下信息：
 
 ## 原理
 
-![image-20210708152018723](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210708152018723.png)
+![](./images/arch.png)
 
 ## Ingress-Nginx
 
