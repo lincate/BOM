@@ -1,5 +1,5 @@
 * 架构篇
-* [架构基础](/ArchitectureBase.md)
+* [架构基础](/architecture/ArchitectureBase.md)
      * 基本概念
         * [CAP](/architecture/concept/CAP.md)
         * [Load Balance](/architecture/concept/LoadBalance.md)
@@ -7,13 +7,13 @@
         * [KeepAlived](/architecture/concept/keepAlived.md)
      * 分布式架构
        * 架构演进
-        
+       
      * 架构之美
      
      * 什么是架构    
-   
+     
      * 架构重构
-   
+     
    * 如何重构               
    
      * 凤凰架构
