@@ -20,7 +20,3 @@ IT终身职业者
 ### 开源协议
 
 本着互联网的开放精神，本项目采用开放的[GPL]协议进行许可。
-
-### 在线阅读地址
-
-GitHub Pages 完整阅读：[进入](https://lincate.github.io/BOM/)
