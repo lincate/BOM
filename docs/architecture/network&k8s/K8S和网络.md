@@ -1,3 +1,27 @@
+# 网络基础
+
+在OSI网络模型中，每一层使用不同的数据格式封装不同的内容。网络模型以及数据封装如下：
+
+<img src="./images/iso.png" style="zoom:60%;" />
+
+| Layer | Name         | Data Unit         | Function                                                     |
+| ----- | ------------ | ----------------- | ------------------------------------------------------------ |
+| 7     | Application  | Data              | 高级 API 和应用程序协议，如 HTTP、DNS 和 SSH。               |
+| 6     | Presentation | Data              | 字符编码、数据压缩和加密/解密。                              |
+| 5     | Session      | Data              | 节点之间的连续数据交换在这里进行管理：发送多少数据，何时发送更多数据。 |
+| 4     | Transport    | Segment, datagram | 在网络端点之间传输数据段，包括分段、确认和多路复用。         |
+| 3     | Network      | Packet            | 为网络上的所有端点构建和管理寻址、路由和流量控制。           |
+| 2     | Data Link    | Frame             | 在物理层连接的两个节点之间传输数据帧。                       |
+| 1     | Physical     | Bit               | 通过媒体发送和接收比特流。                                   |
+
+总体数据封装如下：
+
+![](./images/package.png)
+
+另外通过网段划分来进行局域网的设置，这个和Kubernetes网络设定一致。
+
+![](./images/subnetwork.png)
+
 # Linux网络
 
 ## 网络接口
