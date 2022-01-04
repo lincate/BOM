@@ -5,6 +5,9 @@
         * [Load Balance](/architecture/concept/LoadBalance.md)
         * [IO模型](/architecture/concept/IOModel.md)
         * [KeepAlived](/architecture/concept/keepAlived.md)
+        * [容错机制](/architecture/concept/tolerance.md)
+     * 高可用
+        * [MySQL高可用](/architecture/HA/MySQLHA.md)
      * 分布式架构
        * 架构演进
        
@@ -13,7 +16,7 @@
      * 什么是架构    
      
      * 架构重构
-     
+   
    * 如何重构               
    
      * 凤凰架构
