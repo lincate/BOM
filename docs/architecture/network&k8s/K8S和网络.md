@@ -506,3 +506,141 @@ CNI、DNS、网络安全是集群网络必不可少的组成部分；它们桥�
 DNS 必不可少；完整的设置和平稳运行的网络需要网络和集群管理员精通在其集群中扩展 CoreDNS。大量 Kubernetes 问题源于 DNS 和 CoreDNS 的错误配置。
 
 # Kubernetes网络抽象
+
+Kubernetes中的网络抽象，主要是服务发现和负载均衡。了解Kubernetes的网络抽象，有助于理解网络，如何设计网络，网络故障排查的。
+
+网络抽象列表如下：
+
+- StatefulSet
+- EndPoint
+  - EndPointSlice
+- Service
+  - EndPoint
+  - Cluster
+  - Headless
+  - External
+  - LoadBalancer
+- Ingress
+  - Ingress Controller
+  - Ingress Rules
+- Service meshes
+  - Linkerd
+  - Istio
+
+## StatefulSet
+
+是一种负载管理抽象，用来管理Pod，与Deployment不同的是，会做一下变更：
+
+- 稳定、唯一的网络标识
+- 稳定、持久的存储
+- 有序、优雅的部署和扩展
+- 有序的自动滚动更新
+
+有状态服务适合于包含数据的服务，例如：数据库等 
+
+EndPoint与EndPointSlice有什么区别呢？
+
+想象一下场景，集群内有数千个节点和数万个服务。我们知道Kubernetes使用watche机制来对每个服务进行监控。当Pods发生变化是，EndPoint会进行相应的变化，更新后的EndPoint会推送至侦听程序kube-proxy。因此带来的ETCD的压力，API Server的压力和网络本身的压力。
+
+kube-proxy设计的一个功能，期望任何Pod都能够路由到任何服务而不需要通知。EndPointSlice类似于数组，包含了一组的EndPoint。二者区别不在于模式，而是在于Kubernetes如何对待。
+
+对于EndPoint，kube-proxy会监控每个服务的变化，而EndPointSlice会以组为单位进行监控。监控的压力大大减小。
+
+默认的Slice包含100个EndPoints，可以通过参数进行变更。
+
+-------------------
+
+Tips
+
+pause容器时Pod中所有运行时容器的父容器。他保存并共享Pod的所有命名空间。
+
+---------------
+
+HeadlessService不支持负载均衡，仅将服务DNS记录指向选择的Pod。
+
+可以通过接口返回后端Pod的地址：`kubectl exec dnsutils -- host -v -ta tools`
+
+使用ExternalName可以指定服务指定的外部DNS服务器。
+
+## Ingress
+
+特定的L7负载均衡器，是提供给外部访问的。
+
+通过控制器和规则，完成从外部到内部的负载均衡。通过IngressClass指定不同的控制器完成对规则的匹配达到均衡目的。
+
+常见的控制器列表
+
+| 名称                    | 商业支持 | 引擎    | 协议                         |
+| ----------------------- | -------- | ------- | ---------------------------- |
+| Ambassador              | Yes      | Envoy   | gRPC, HTTP/2, WebSockets     |
+| Community ingress Nginx | Yes      | NGINX   | gRPC, HTTP/2, WebSockets     |
+| NGINX Inc. ingress      | Yes      | NGINX   | HTTP, Websocket, gRPC        |
+| HAProxy ingress         | Yes      | HAProxy | gRPC, HTTP/2, WebSockets     |
+| Istio Ingress           | No       | Envoy   | HTTP, HTTPS, gRPC, HTTP/2    |
+| Kong ingress            | Yes      | Lua     | gRPC, HTTP/2                 |
+| Traefik                 | Yes      | Traefik | HTTP/2, gRPC, and WebSockets |
+
+对于控制器的选择主要考虑：
+
+- 协议支持
+- 业务支持
+- 额外功能
+- 流量分配
+
+## ServiceMesh
+
+以API驱动的基础设施层，用于处理服务到服务的通信。可以通过流量分类，严格控制管理面和业务面的隔离。
+
+从安全角度看，集群内部的Pod通信未必都是加密的，每个服务的应用都必须为每个服务单独配置监控。另外，在集群中注入故障是有用的。现在的测试不应该仅仅局限在功能，易用性能。还应该验证架构的健壮性，扩展性，稳定性。以上的验证如何满足呢？现在故障注入测试或者很多叫混沌测试。ServiceMesh可以进行诸如：延迟，拒绝，断路等等。而不再仅仅是杀死Pod。
+
+在ServiceMesh中，主要提供以下功能：
+
+- *服务发现*
+
+  依靠 DNS 进行服务发现，服务网格管理服务发现，并且不需要在每个单独的应用程序中实现它
+
+- *负载均衡*
+
+  添加了更高级的负载平衡算法，例如最少请求、一致散列和区域感知
+
+- *弹性沟通*
+
+  可以通过不必在应用程序代码中实现重试、超时、断路或速率限制来提高应用程序的通信弹性
+
+- *安全*
+
+  端到端加密 在服务之间使用 mTLS * 授权策略，其中 授权哪些服务可以相互通信，而不仅仅是在 Kubernetes 网络策略中的第 3 层和第 4 层
+
+- *可观察性*
+
+  通过丰富第 7 层指标并添加跟踪和警报来增加可观察性
+
+- *路由控制*
+
+  在集群中移动和镜像
+
+- *API接口*
+
+  可以通过服务网格实现提供的 API 进行控制
+
+一些常见的ServiceMesh组件：
+
+- Istio
+
+  基于Go，带有Envoy代理的控制平面
+
+  最初发布的Kubernetes原生组件
+
+- Consul
+
+  使用HashiCorp Consul作为控制平面
+
+  Consul Connect作为DaemonSet，处理路由和转发的Envoy sidecar进行代理通信
+
+- Linkerd
+
+  基于Go，使用Linkerd代理
+
+  没有流量转移，没有追踪
+
+  仅仅作用于K8S，使用更简单。
