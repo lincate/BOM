@@ -40,7 +40,7 @@ Keepalived主要通过虚拟路由冗余来实现高可用，使用简单，只�
 
 ##  Keepalived体系结构
 
-<img src=".\imagecap\keepalive_structure.png"  />
+![](.\imagecap\keepalive_structure.png)
 
 ​                                                                                         体系结构
 
