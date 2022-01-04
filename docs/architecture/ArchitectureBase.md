@@ -93,13 +93,13 @@
   - 用户及使用环境约束 （用户特点，用户水平，早起版本的使用习惯）
   - 开发组织及开发环境的约束 （技术特点，组织分布，软件资产）
 
-  <img src="C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210714150654779.png" alt="image-20210714150654779" style="zoom:80%;" />
+  ![](./baseimg/restrict.png)
 
 三大因素驱动的架构设计
 
 影响架构的因素多而杂   =》  全面有序的理解需求  =》 确定关键功能，确定系统质量属性商业属性，确定约束条件
 
-![image-20210714150903794](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210714150903794.png)
+![](./baseimg/condition.png)
 
 
 
@@ -148,7 +148,7 @@
 
   用例视图，逻辑视图，运行视图，开发视图，物理视图
 
-  <img src="C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210715142156632.png" alt="image-20210715142156632" style="zoom:67%;" />
+  ![](./baseimg/4view.png)
 
 - VXD 9视图
 
@@ -194,7 +194,7 @@ pattern-oriented software architecture
 
 另外说法：
 
-![image-20210715144147656](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210715144147656.png)
+![](./baseimg/arch_pattern.png)
 
 ### 架构模式 vs 设计模式
 
