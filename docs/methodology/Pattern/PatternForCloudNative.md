@@ -346,6 +346,6 @@ AMQP, Kafka, RabitMQ, RockatMQ, ActiveMQ, MQ, NATS等
 
 典型的用例, 在K8S中, 使用Service对后端Pod进行抽象, 而不是直接访问Pod的IP.
 
-在更近一部, K8S对所有的服务再进行一次抽象, 通过外部的负载均衡器完成对所有Pod的负载均衡, 如下图:
+再更近一步, K8S对所有的服务再进行一次抽象, 通过外部的负载均衡器完成对所有Pod的负载均衡, 如下图:
 
 ![image-20220105170126440](PatternForCloudNative.assets/image-20220105170126440.png)
