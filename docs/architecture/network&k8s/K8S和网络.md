@@ -31,7 +31,7 @@
 
 桥接：在单个主机上建立多个2层网络，就像是主机上的的网络之间的交换机。桥接允许POD与其各自的网络接口通信，并且通过节点的网络接口与外部通信。
 
-![](.\images\bridge.JPG)
+<img src=".\images\bridge.JPG" style="zoom:50%;" />
 
 
 
@@ -159,7 +159,7 @@ chain并不是包含所有的表，表的执行顺序保持不变。执行顺序
 
 数据包流程示意如下：
 
-![](.\images\table_chains.JPG)
+<img src=".\images\table_chains.JPG" style="zoom:80%;" />
 
 #### `Subchains`
 
@@ -200,7 +200,7 @@ chain并不是包含所有的表，表的执行顺序保持不变。执行顺序
 
 IPVS是一个L4的负载均衡器，简单图解如下：
 
-![](.\images\IPVS.JPG)
+<img src=".\images\IPVS.JPG" style="zoom: 67%;" />
 
 支持的均衡策略，rr，lc，dh，sh，sed，nq。
 
@@ -238,7 +238,7 @@ IPVS支持的数据包转发模式：NAT,DR，IP隧道。通过`ipset`进行hash
 
 我们每个容器都有使用`cgroup`和`namespace`。`cgroup`控制容器对内核中资源的访问，`namespace`则是单独的资源隔离，与根命名空间分开管理。
 
-![](.\images\cgoup_namespace.jpg)
+<img src=".\images\cgoup_namespace.jpg" style="zoom:50%;" />
 
 `cgroup`可以控制的资源包括：CPU, MEM，IO, Network.
 
@@ -280,7 +280,7 @@ IPVS支持的数据包转发模式：NAT,DR，IP隧道。通过`ipset`进行hash
 
 Docker的网络，都由通过连接的veth-pair，一端连接到container，一端连接到Docker bridge。如下提：
 
-![](.\images\docker_bridge.png)
+<img src=".\images\docker_bridge.png" style="zoom:50%;" />
 
 Bridge仅仅作用于运行在同一个主机的容器。运行在不同主机的容器如何进行通信呢？我们可以使用Overlay。Docker使用本地和全局驱动的概念，在本机使用Bridge，跨主机，使用Overlay。全局依赖于第三方存储来进行跨主机系诶套。例如：etcd等。
 
@@ -294,7 +294,7 @@ VXLAN的隧道断点VTEP位于两个主机，分别通过隧道连接到主机�
 
 如图示：
 
-![](.\images\vxlan.jpg)
+<img src=".\images\vxlan.jpg" style="zoom:50%;" />
 
 ## underlay网络
 
@@ -310,7 +310,7 @@ VXLAN的隧道断点VTEP位于两个主机，分别通过隧道连接到主机�
 
 架构如下：
 
-![](.\images\cni.jpg)
+<img src=".\images\cni.jpg" style="zoom:50%;" />
 
 ------
 
@@ -359,7 +359,7 @@ K8S的网络模型支持多主机集群网络，默认情况，Pod可以相互�
 
   集群之间完全独立，可以使用相同的Pod IP，名称等。
 
-  ![](.\images\isolate.jpg)
+  <img src=".\images\isolate.jpg" style="zoom:67%;" />
 
 - ## Flat Networks
 
@@ -371,7 +371,7 @@ K8S的网络模型支持多主机集群网络，默认情况，Pod可以相互�
 
   
 
-  ![](./images/flat.jpg)
+  <img src="./images/flat.jpg" style="zoom:67%;" />
 
 - ## Island Networks
 
@@ -379,7 +379,7 @@ K8S的网络模型支持多主机集群网络，默认情况，Pod可以相互�
 
 K8S网络分为控制平面和数据平面，其中控制平面指使用哪条路径发送数据。数据平面指将数据包从一个接口转发到另一个接口。
 
-![](./images/island.jpg)
+<img src="./images/island.jpg" style="zoom:67%;" />
 
 K8S使用kube-controller-manager进行管理配置。其中配置了集群的CIDR。
 
@@ -403,7 +403,7 @@ kubelet必须能够连接到Kubernetes API Server，如下的连接交互图：
 
   允许kubelet云容器运行时进行对话，允许操作容器运行时的API，例如：启动容器
 
-  ![](./images/control.jpg)
+  <img src="./images/control.jpg" style="zoom:67%;" />
 
 ### CNI规范
 
@@ -429,7 +429,7 @@ Kubernetes一次只允许使用一个插件（某一个主类），但是插件�
 
 例如CNI配置：
 
-![](./images/cni-config.jpg)
+<img src="./images/cni-config.jpg" style="zoom:67%;" />
 
 ### CNI插件
 
