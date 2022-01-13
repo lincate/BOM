@@ -14,11 +14,11 @@
 
 总体数据封装如下：
 
-![](./images/package.png)
+<img src="./images/package.png" style="zoom:67%;" />
 
 另外通过网段划分来进行局域网的设置，这个和Kubernetes网络设定一致。
 
-![](./images/subnetwork.png)
+<img src="./images/subnetwork.png" style="zoom:67%;" />
 
 # Linux网络
 
