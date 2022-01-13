@@ -210,6 +210,8 @@ IPVS支持的数据包转发模式：NAT,DR，IP隧道。通过`ipset`进行hash
 
 是一种编程，允许特殊沙盒程序在内核中运行而无需再内核和用户态之间来回传递的系统。例如`tcpdump`就是BFP的一种用例。eBPF可以直接访问系统调用，而无需向用户空间添加内核挂钩常用的方法。eBPF在内核4.08以后启用。
 
+<img src="K8S和网络.assets/image-20220113105853848.png" alt="image-20220113105853848" style="zoom:67%;" />
+
 支持的挂载点除了socket以外还包括：
 
 - *Kprobes*
@@ -282,7 +284,7 @@ Docker的网络，都由通过连接的veth-pair，一端连接到container，�
 
 <img src=".\images\docker_bridge.png" style="zoom:50%;" />
 
-Bridge仅仅作用于运行在同一个主机的容器。运行在不同主机的容器如何进行通信呢？我们可以使用Overlay。Docker使用本地和全局驱动的概念，在本机使用Bridge，跨主机，使用Overlay。全局依赖于第三方存储来进行跨主机系诶套。例如：etcd等。
+Bridge仅仅作用于运行在同一个主机的容器。运行在不同主机的容器如何进行通信呢？我们可以使用Overlay。Docker使用本地和全局驱动的概念，在本机使用Bridge，跨主机，使用Overlay。全局依赖于第三方存储来进行跨主机通信。例如：etcd等。
 
 ## Overlay网络
 
@@ -375,13 +377,13 @@ K8S的网络模型支持多主机集群网络，默认情况，Pod可以相互�
 
 - ## Island Networks
 
-独立网络和扁平网络的集合，进出Pod的流量需要经过代理。大多数情况是通过`iptables`对离开节点的Pod数据包的SNAT实现，称之为*masquerading*，它将Pod地址重写为Node地址，从外部看，此包数据来源于Node而不是Pod。共享一个IP一个隐藏一个IP，在集群中，哪个IP是Pod IP，哪个IP是外部IP是很明显的。是否还记得安装时对Pod以及service做的网络规划。
+独立网络和扁平网络的集合，进出Pod的流量需要经过代理。大多数情况是通过`iptables`对离开节点的Pod数据包的SNAT实现，称之为*masquerading*，它将Pod地址重写为Node地址，从外部看，此包数据来源于Node而不是Pod。一个共享IP一个隐藏一个IP，在集群中，哪个IP是Pod IP，哪个IP是外部IP是很明显的。是否还记得安装时对Pod以及service做的网络规划。
 
 K8S网络分为控制平面和数据平面，其中控制平面指使用哪条路径发送数据。数据平面指将数据包从一个接口转发到另一个接口。
 
 <img src="./images/island.jpg" style="zoom:67%;" />
 
-K8S使用kube-controller-manager进行管理配置。其中配置了集群的CIDR。
+K8S使用kube-controller-manager进行管理配置。其中配置了集群的CIDR（Classless Inter-Domain Routing）。
 
 kubelet充当了协调器，主要实现了容器网络管理（CNI）和容器运行时（CRI）。当收到schedule下发的任务时，kubelet通过与API的交互，完成对Pod状态的具体更改。
 
@@ -521,7 +523,7 @@ Pod从主机继承名称解析配置
 
 Kubernetes 网络模型是网络设计如何在集群内工作的基础。在节点上运行的 CNI 实现了 Kubernetes 网络模型中规定的原则。该模型没有定义网络安全；Kubernetes 的可扩展性允许 CNI 通过网络策略实现网络安全。
 
-CNI、DNS、网络安全是集群网络必不可少的组成部分；它们桥接Linux网络，覆盖在之间的间隙，和容器和Kubernetes联网。
+CNI、DNS、网络安全是集群网络必不可少的组成部分；它们桥接Linux网络，覆盖在之间的间隙，容器和Kubernetes联网。
 
 选择 正确的 CNI 需要从开发人员和管理员的角度进行评估。需要制定要求并测试 CNI。我们认为，如果没有关于网络安全和支持它的 CNI 的讨论，一个集群是不完整的。
 
