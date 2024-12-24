@@ -8,6 +8,8 @@
 * sAFE
     * 架构演进 
 * 敏捷
-    * 架构演进  
+    * 架构演进 
+* 系统工程
+  * [技术洞察](/methodology/SystemEngineering/TechnicalInsight.md)
 * 效率提升
     * 十倍效率个人   
