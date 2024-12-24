@@ -10,9 +10,7 @@ DDD的时间成本比较平缓，在复杂度到达一定程度后，时间成�
 
 ![](imageDDD/image-20210712153238563.png)
 
-![image-20210712153238563](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210712153238563.png)
-
-![image-20210712153733026](C:\Users\lwx639077\AppData\Roaming\Typora\typora-user-images\image-20210712153733026.png)
+![image-20210712153733026](imageDDD/image-20210712153733026.png)
 
 
 
